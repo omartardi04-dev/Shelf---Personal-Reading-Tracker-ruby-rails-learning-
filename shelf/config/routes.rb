@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   #Book model routes:
-  resources :books
+  resources :books do
+    resources :reviews, only: [:create, :destroy]
+  end
 end
