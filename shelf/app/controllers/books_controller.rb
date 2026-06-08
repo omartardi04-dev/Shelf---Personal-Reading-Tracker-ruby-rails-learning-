@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
-    @books = current_user.books
+    @books = current_user.books.includes(:reviews).recently_added
+    @review_counts = Book.left_joins(:reviews).group(:id).count
   end
   def show
     @book = current_user.books.find(params[:id])

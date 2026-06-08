@@ -2,6 +2,7 @@
   <h3><%= link_to book.title, book_path(book) %></h3>
   <p><%= book.author %></p>
   <p><%= book.status %></p>
+  <p>Reviews: <%= @review_counts[book.id] || 0 %></p>
   <%= link_to "Edit", edit_book_path(book) %>
   <%= link_to "Delete", book_path(book), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
