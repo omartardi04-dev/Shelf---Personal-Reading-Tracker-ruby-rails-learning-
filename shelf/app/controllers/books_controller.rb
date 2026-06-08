@@ -2,6 +2,11 @@ class BooksController < ApplicationController
   def index
     @books = current_user.books.includes(:reviews).recently_added
     @review_counts = Book.left_joins(:reviews).group(:id).count
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @books}
+    end
   end
   def show
     @book = current_user.books.find(params[:id])
