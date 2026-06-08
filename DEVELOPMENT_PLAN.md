@@ -100,26 +100,26 @@ Now add the rules and behavior that live on the models.
 
 With models in place, add login. This unblocks everything user-scoped.
 
-### ☐ Task 3.1 — Secure passwords
+### ☑ Task 3.1 — Secure passwords
 - Add `has_secure_password` to `User` (relies on bcrypt from Task 0.1).
 - In the console, create a user with `password` / `password_confirmation`; test `user.authenticate("...")`.
 
 > **Concepts:** `has_secure_password`, password hashing (bcrypt), virtual attributes (`password` isn't a real column — `password_digest` is), `authenticate`.
 
-### ☐ Task 3.2 — Users controller & signup
+### ☑ Task 3.2 — Users controller & signup
 - Routes: `resources :users, only: [:new, :create]` (or a `signup` route).
 - `UsersController#new` / `#create` with **strong params** (`params.require(:user).permit(...)`).
 - A signup form view.
 
 > **Concepts:** RESTful routes, `resources`, strong parameters, `render` vs `redirect_to`, form views.
 
-### ☐ Task 3.3 — Sessions controller (login/logout)
+### ☑ Task 3.3 — Sessions controller (login/logout)
 - Routes: `get "/login"`, `post "/login"`, `delete "/logout"` mapped to `SessionsController`.
 - `#new` (login form), `#create` (find user by email, `authenticate`, set `session[:user_id]`), `#destroy` (reset session).
 
 > **Concepts:** Sessions, the `session` hash, cookies, looking up records (`User.find_by`), the difference between authentication (who you are) and the session (staying logged in).
 
-### ☐ Task 3.4 — current_user, logged_in? & require_login
+### ☑ Task 3.4 — current_user, logged_in? & require_login
 - In `ApplicationController`: `current_user` (memoized `@current_user ||= User.find_by(id: session[:user_id])`) and `logged_in?`, both exposed via `helper_method`.
 - Add `before_action :require_login`.
 - `skip_before_action :require_login` on signup and login actions.
@@ -132,7 +132,7 @@ With models in place, add login. This unblocks everything user-scoped.
 
 The heart of the app: full Create/Read/Update/Delete for books, scoped to the logged-in user.
 
-### ☐ Task 4.1 — Books routes & the 7 REST actions
+### ☑ Task 4.1 — Books routes & the 7 REST actions
 - `resources :books` and set a `root` route (e.g. `root "books#index"`).
 - `BooksController` with all seven actions: `index`, `show`, `new`, `create`, `edit`, `update`, `destroy`.
 - Scope books to `current_user` (e.g. `current_user.books`).
@@ -141,7 +141,7 @@ The heart of the app: full Create/Read/Update/Delete for books, scoped to the lo
 
 > **Concepts:** REST & the 7 standard actions, `resources` routing, route helpers (`book_path`, `books_path`), strong params, HTTP status codes (`:unprocessable_entity` = 422), `redirect_to` vs `render`, the controller-action-view flow.
 
-### ☐ Task 4.2 — Layout, views & partials
+### ☑ Task 4.2 — Layout, views & partials
 - Confirm `app/views/layouts/application.html.erb` uses `<%= yield %>`.
 - `index` renders a collection: `render @books` (uses `_book.html.erb` partial automatically).
 - Shared `_form.html.erb` used by both `new` and `edit`.
@@ -149,7 +149,7 @@ The heart of the app: full Create/Read/Update/Delete for books, scoped to the lo
 
 > **Concepts:** Layouts & `yield`, **partials**, collection rendering (`render @books`), the partial naming convention (`_book.html.erb` ↔ `render @books`), ERB syntax (`<%= %>` vs `<% %>`), local variables in partials.
 
-### ☐ Task 4.3 — The book form
+### ☑ Task 4.3 — The book form
 - `_form.html.erb` using `form_with model: @book`.
 - A status dropdown: `f.select :status, Book.statuses.keys`.
 - A delete link with `data: { turbo_method: :delete }` and a confirm.
