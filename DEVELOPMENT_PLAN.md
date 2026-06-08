@@ -156,7 +156,7 @@ The heart of the app: full Create/Read/Update/Delete for books, scoped to the lo
 
 > **Concepts:** `form_with`, form builders (`f.text_field`, `f.select`, `f.submit`), populating a select from `Book.statuses`, Turbo-driven links, `data-turbo-method`, CSRF protection (handled automatically).
 
-### ☐ Task 4.4 — Flash messages
+### ☑ Task 4.4 — Flash messages
 - `flash[:notice]` after a successful create (survives the `redirect_to`).
 - `flash.now[:alert]` on a failed form (used with `render`, does **not** survive a redirect).
 - Render flash messages in the layout.
@@ -169,7 +169,7 @@ The heart of the app: full Create/Read/Update/Delete for books, scoped to the lo
 
 Let users review books. Smaller than Books, reinforces the same patterns with **nested** resources.
 
-### ☐ Task 5.1 — Reviews controller & nested routes
+### ☑ Task 5.1 — Reviews controller & nested routes
 - Nest reviews under books: `resources :books do resources :reviews, only: [:create, :destroy] end`.
 - `ReviewsController#create` builds the review from `@book.reviews` and `current_user`.
 - Show reviews and a review form on the book's `show` page.
