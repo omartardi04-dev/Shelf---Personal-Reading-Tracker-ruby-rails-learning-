@@ -1,0 +1,33 @@
+<%= form_with model: book do |f| %>
+
+  <% if book.errors.any? %>
+    <ul>
+      <% book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, Book.statuses.keys %>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>
